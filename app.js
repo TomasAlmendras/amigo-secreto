@@ -15,6 +15,7 @@ function actualizarAmigo(){
     let listaAmigos = document.getElementById('listaAmigos');
     listaAmigos.innerHTML = '';
     
+   //mostramos la lista de amigos y como se actualiza 
     amigosIngresados.forEach(amigo => {
         let li = document.createElement('li');
         li.textContent = amigo;
@@ -22,23 +23,28 @@ function actualizarAmigo(){
     });
 }
 
+//Implementa una función para sortear los amigos
 function sortearAmigo(){
     let indice, amigoSorteado;
-    if(amigosIngresados === ''){
+
+    //verificamos que se haya ingresado al menos un nombre
+    if(amigosIngresados.length === 0){
         alert(`Debe ingresar un amigo antes de sortear`);
-        validarListaAmigo();
     }else{
+        //usamos math para sacar el indice y despues le damos ese valor a amigoSorteado
         indice = Math.floor(Math.random()*amigosIngresados.length);
         amigoSorteado = amigosIngresados[indice];
 
         document.getElementById('resultado').innerHTML = `El amigo sorteado es: ${amigoSorteado}`;
 
-        console.log(`indice del amigo sorteado: ${amigoSorteado}`);
+        //console.log(`indice del amigo sorteado: ${amigoSorteado}`);
     }
 
 }
 
+//Valida amigo ingresado no sea vacio, sino que se ingrese el nombre al array
 function validarListaAmigo(){
+
     if (document.getElementById('amigo').value === ""){
         alert(`Por favor, inserte un nombre`);
     }else{
@@ -47,6 +53,7 @@ function validarListaAmigo(){
     }
 }
 
+//Limpia la caja para ingresar otro amigo
 function limpiarCaja(){
     document.getElementById('amigo').value = '';
 }
