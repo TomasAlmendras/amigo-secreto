@@ -6,7 +6,7 @@ function agregarAmigo(){
 
     validarListaAmigo();
     actualizarAmigo();
-    console.log(amigosIngresados);
+    //test console.log(amigosIngresados);
 }
 
 //Implementa una función para actualizar la lista de amigos
@@ -21,5 +21,16 @@ function actualizarAmigo(){
     });
 }
 
+function validarListaAmigo(){
+    if (document.getElementById('amigo').value === ""){
+        alert(`Por favor, inserte un nombre`);
+    }else{
+        amigosIngresados.push(document.getElementById('amigo').value);
+        limpiarCaja();
+    }
+}
 
+function limpiarCaja(){
+    document.getElementById('amigo').value = '';
+}
 
