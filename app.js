@@ -44,6 +44,7 @@ function sortearAmigo(){
 
 //Valida amigo ingresado no sea vacio, sino que se ingrese el nombre al array
 function validarListaAmigo(){
+
     let nombre = document.getElementById('amigo').value;
 
     if (nombre.trim() === ''){
@@ -52,6 +53,7 @@ function validarListaAmigo(){
         amigosIngresados.push(nombre);
         limpiarCaja();
     }
+    
 }
 
 //Limpia la caja para ingresar otro amigo
