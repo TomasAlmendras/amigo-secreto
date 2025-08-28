@@ -44,11 +44,12 @@ function sortearAmigo(){
 
 //Valida amigo ingresado no sea vacio, sino que se ingrese el nombre al array
 function validarListaAmigo(){
+    let nombre = document.getElementById('amigo').value;
 
-    if (document.getElementById('amigo').value === ""){
+    if (nombre.trim() === ''){
         alert(`Por favor, inserte un nombre`);
     }else{
-        amigosIngresados.push(document.getElementById('amigo').value);
+        amigosIngresados.push(nombre);
         limpiarCaja();
     }
 }
