@@ -47,8 +47,10 @@ function validarListaAmigo(){
 
     let nombre = document.getElementById('amigo').value;
 
-    if (nombre.trim() === ''){
+    if (nombre === ''){
         alert(`Por favor, inserte un nombre`);
+    }else if (amigosIngresados.includes(nombre)){
+        alert(`El nombre "${nombre}" ya está en la lista. Usá apellido o un apodo para diferenciarlo.`);
     }else{
         amigosIngresados.push(nombre);
         limpiarCaja();
