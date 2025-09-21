@@ -74,8 +74,10 @@ function limpiarCaja(){
 
 // Detecta cuando se presiona Enter en el input
 document.getElementById('amigo').addEventListener('keydown', function(event) {
+    
     if (event.key === 'Enter') {
         agregarAmigo();
     }
+      
 });
 
