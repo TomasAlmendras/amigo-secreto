@@ -45,14 +45,23 @@ function sortearAmigo(){
 //Valida amigo ingresado no sea vacio, sino que se ingrese el nombre al array
 function validarListaAmigo(){
 
-    let nombre = document.getElementById('amigo').value;
+    let nombre = document.getElementById('amigo').value.trim();
 
-    if (nombre === ''){
+    // Pasamos todo a minúsculas para comparar
+    let nombreNormalizado = nombre.toLowerCase();
+
+    // Expresión regular: solo letras y espacios intermedios (incluye acentos y ñ)
+    let regex = /^[a-záéíóúñ]+(?: [a-záéíóúñ]+)*$/i;
+
+    if (nombre === '') {
         alert(`Por favor, inserte un nombre`);
-    }else if (amigosIngresados.includes(nombre)){
+    } else if (!regex.test(nombre)) {
+        alert(`Ingrese un nombre válido (solo letras, sin números ni caracteres especiales)`);
+    } else if (amigosIngresados.includes(nombreNormalizado)) {
         alert(`El nombre "${nombre}" ya está en la lista. Usá apellido o un apodo para diferenciarlo.`);
-    }else{
-        amigosIngresados.push(nombre);
+    } else {
+        // Guardamos el nombre normalizado en el array
+        amigosIngresados.push(nombreNormalizado);
         limpiarCaja();
     }
     
@@ -62,4 +71,11 @@ function validarListaAmigo(){
 function limpiarCaja(){
     document.getElementById('amigo').value = '';
 }
+
+// Detecta cuando se presiona Enter en el input
+document.getElementById('amigo').addEventListener('keydown', function(event) {
+    if (event.key === 'Enter') {
+        agregarAmigo();
+    }
+});
 
